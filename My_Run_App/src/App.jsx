@@ -8,8 +8,9 @@ import './App.css'
 import Runs from './Runs';
 import Navbar from './Navbar';
 import Home from './Home';
-import Post from './AddRun';
 import AddRun from './AddRun';
+import DelRun from './DelRun';
+import Profile from './Profile';
 
 
 function App() {
@@ -21,9 +22,11 @@ function App() {
         <Navbar />
         <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/Home" element={<Home />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/runs" element={<Runs />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="/addrun" element={<AddRun />} />
+        <Route path="/delrun" element={<DelRun />} />
         </Routes>
       </div>
     </Router>

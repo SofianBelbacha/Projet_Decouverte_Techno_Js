@@ -13,13 +13,20 @@ function MyNavbar(props) {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto">
                 <li className="nav-item active">
-                    <a><Link to="/Home">Accueil</Link></a>
+                    <a class="navbar-brand"><Link to="/Home">Accueil</Link></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Courses
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item navbar-brand"><Link to="/Runs">Afficher</Link></a></li>
+                        <li><a class="dropdown-item navbar-brand"><Link to="/AddRun">Ajouter</Link></a></li>
+                        <li><a class="dropdown-item navbar-brand"><Link to="/DelRun">Supprimer</Link></a></li>
+                    </ul>
                 </li>
                 <li className="nav-item">
-                    <a><Link to="/Runs">Courses</Link></a>
-                </li>
-                <li className="nav-item">
-                    <a><Link to="/AddRun">Ajout</Link></a>
+                    <a class="navbar-brand"><Link to="/Profile">Utilisateur</Link></a>
                 </li>
             </ul>
             <form className="d-flex">

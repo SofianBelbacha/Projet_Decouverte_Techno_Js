@@ -71,6 +71,38 @@ app.post('/api/add-run', (req, res) => {
     );
 });
 
+app.delete('/api/delete-run', (req, res) => {
+    const { num_Seance } = req.body;
+
+    if (!num_Seance) {
+        return res.status(400).json({ message: 'Le numéro de séance est requis pour la suppression.' });
+    }
+
+    console.log('Got body:', req.body);
+
+    let messageSuppression = `Run with session number ${num_Seance} deleted: `;
+
+    connection.execute(
+        'DELETE FROM seance WHERE num_Seance = ?',
+        [num_Seance],
+        (err, results) => {
+            if (err) {
+                console.error('Erreur lors de la suppression :', err);
+                return res.status(500).json({ message: 'Erreur lors de la suppression de la course dans la base de données.' });
+            }
+
+            if (results.affectedRows > 0) {
+                console.log('Deleted rows:', results.affectedRows);
+                messageSuppression += `Rows affected: ${results.affectedRows}`;
+                res.json({ message: messageSuppression });
+            } else {
+                return res.status(404).json({ message: 'Course non trouvée avec ce numéro de séance.' });
+            }
+        }
+    );
+});
+
+
 
 
 app.listen(port, () => console.log(`Example app listening on port ${port}! http://localhost:${port}/`));
